@@ -26,8 +26,15 @@ public class HandsOnJsoup {
             String docTitle = doc.title();
             System.out.println(docTitle);
             Element updateAt = doc.select("p#update-at").first();
-            System.out.println(updateAt.text());
+            String updateAtMessage = updateAt.text();
+            System.out.println(updateAtMessage);
+            String targetUpdateAtMessage = "ข้อมูลอัพเดทเมื่อวันที่ 23 ธันวาคม 2560";
+//            if (updateAtMessage == targetUpdateAtMessage) {
+//                System.out.println(true);
+//            }
+            System.out.println(updateAtMessage == targetUpdateAtMessage);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
