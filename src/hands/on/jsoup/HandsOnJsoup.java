@@ -5,6 +5,12 @@
  */
 package hands.on.jsoup;
 
+import java.io.IOException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 /**
  *
  * @author Watchanan
@@ -15,7 +21,14 @@ public class HandsOnJsoup {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            Document doc = Jsoup.connect("https://www3.reg.cmu.ac.th/transcript/").get();
+            String docTitle = doc.title();
+            System.out.println(docTitle);
+            Element updateAt = doc.select("p#update-at").first();
+            System.out.println(updateAt.text());
+        } catch (IOException e) {
+        }
     }
-    
+
 }
