@@ -31,53 +31,6 @@ import javax.ws.rs.core.MediaType;
  * @author Watchanan
  */
 
-
-/**
- *
- * JMaker @author lodenrogue (https://github.com/lodenrogue/JMaker)
- */
-class JMaker {
-
-    private String eventName;
-    private String key;
-
-    public JMaker(String eventName, String key) {
-        this.eventName = eventName;
-        this.key = key;
-    }
-
-    public void trigger() throws IOException { // with values
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("https://maker.ifttt.com/trigger/" + eventName + "/with/key/" + key);
-        httpClient.execute(request);
-    }
-
-    public void trigger(List<String> values) throws IOException { // without values
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("https://maker.ifttt.com/trigger/" + eventName + "/with/key/" + key);
-        StringEntity params = new StringEntity(buildJson(values));
-        request.addHeader("content-type", "application/json");
-        request.setEntity(params);
-        httpClient.execute(request);
-    }
-
-    private String buildJson(List<String> values) {
-        String json = "{";
-        for (int i = 0; i < 3; i++) {
-            if (values.size() > i) {
-                json += "\"value" + (i + 1) + "\":\"" + values.get(i) + "\"";
-                if (i != 2) {
-                    json += ",";
-                }
-            } else {
-                break;
-            }
-        }
-        json += "}";
-        return json;
-    }
-}
-
 class IFTTT {
 
 	private static final String IFTTT_TRIGGER_ENDPOINT = "https://maker.ifttt.com/trigger/%s/with/key/%s";
