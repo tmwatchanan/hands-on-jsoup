@@ -98,12 +98,6 @@ public class CheckTranscriptUpdate {
                 final String key = "CENSOR";
                 final String myValue1 = targetUpdateAtMessage;
                 new IFTTT().trigger(event, key, myValue1);
-                
-//                List<String> values = new ArrayList<>();
-//                values.add(targetUpdateAtMessage);
-//
-//                JMaker maker = new JMaker("transcript_update", "7HIuJbOOJH_kLrJjcqu-S");
-//                maker.trigger(values);
             }
 
 //            CAPTCHA
